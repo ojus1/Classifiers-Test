@@ -9,7 +9,7 @@ from sklearn import linear_model
 import matplotlib.pyplot as plt
 
 #Preprocessing, cleaning
-df = pd.read_csv("/home/ojus/Documents/binarytree/credit.csv",header=None)
+df = pd.read_csv("/home/ojus/Documents/classifiers_plot/credit.csv",header=None)
 df = df.replace('?', value= np.nan)
 df = df.dropna(axis= 0, how= 'any')
 cat = [0,3,4,5,6,8,9,11,12,15]
@@ -32,7 +32,7 @@ for i in range(0,50) :
     logreg.fit(X_tr,Y_tr)
     logregScores.append(logreg.score(X_ts,Y_ts))
 
-    supVecC = SVC(C= 10)
+    supVecC = SVC(C= 1.25, gamma = np.random.rand())
     supVecC.fit(X_tr,Y_tr)
     svmScores.append(supVecC.score(X_ts,Y_ts))
     
